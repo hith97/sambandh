@@ -1,0 +1,42 @@
+.challenge-intro-video-page {
+  background: #000;
+}
+
+.challenge-intro-video {
+  object-fit: cover;
+}
+
+.challenge-intro-top-hud {
+  position: absolute;
+  top: calc(var(--safe-top) + 10px);
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-inline: calc(var(--safe-left) + 12px) calc(var(--safe-right) + 12px);
+  z-index: 260;
+}
+
+.challenge-intro-meter {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, calc(100% - 152px));
+  pointer-events: none;
+}
+
+.challenge-intro-arrow-nav {
+  justify-content: flex-end;
+  bottom: calc(var(--safe-bottom) + 72px);
+}
+
+.challenge-intro-arrow-nav .video-arrow-btn {
+  margin-left: auto;
+}
+
+@media (max-height: 540px) and (orientation: landscape) {
+  .challenge-intro-arrow-nav {
+    bottom: calc(var(--safe-bottom) + 44px);
+  }
+}

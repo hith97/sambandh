@@ -1,0 +1,197 @@
+@font-face {
+  font-family: 'Baloo';
+  src: url('/assets/fonts/Baloo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NotoSansGurmukhi';
+  src: url('/assets/fonts/NotoSansGurmukhi-VariableFont_wdth,wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NotoSansDevanagari';
+  src: url('/assets/fonts/NotoSansDevanagari-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'NotoSansDevanagari';
+  src: url('/assets/fonts/NotoSansDevanagari-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+:root {
+  --app-vh: 1vh;
+  --safe-top: max(12px, env(safe-area-inset-top));
+  --safe-right: max(12px, env(safe-area-inset-right));
+  --safe-bottom: max(12px, env(safe-area-inset-bottom));
+  --safe-left: max(12px, env(safe-area-inset-left));
+  --screen-pad-x: clamp(14px, 4vw, 24px);
+  --screen-pad-y: clamp(14px, 3.5vh, 28px);
+  --content-max-width: 31.25rem;
+  --content-shell-width: min(calc(100vw - var(--safe-left) - var(--safe-right) - 2 * var(--screen-pad-x)), 31.25rem);
+  --font-display: 'Baloo', sans-serif;
+  --font-ui: 'Poppins', sans-serif;
+  --font-script: 'NotoSansDevanagari', sans-serif;
+  --font-body: var(--font-ui);
+  --font-meter: var(--font-display);
+}
+
+html[data-lang='hi'] {
+  --font-script: 'NotoSansDevanagari', sans-serif;
+  --font-body: 'NotoSansDevanagari', sans-serif;
+}
+
+html[data-lang='pa'] {
+  --font-script: 'NotoSansGurmukhi', sans-serif;
+  --font-body: 'NotoSansGurmukhi', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: calc(var(--app-vh) * 100);
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  overflow: hidden;
+  position: relative;
+  background: #000;
+  touch-action: manipulation;
+}
+
+#root {
+  min-height: calc(var(--app-vh) * 100);
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  position: relative;
+  isolation: isolate;
+}
+
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.page {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  min-height: calc(var(--app-vh) * 100);
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease;
+  contain: layout paint size style;
+}
+
+.page.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  margin: 10px 0;
+  width: 250px;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  color: black;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+button {
+  padding: 12px 30px;
+  margin-top: 20px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #ff0000, #ff9900);
+  color: white;
+  touch-action: manipulation;
+}
+
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  :root {
+    --screen-pad-x: clamp(10px, 2vw, 18px);
+    --screen-pad-y: clamp(8px, 2vh, 14px);
+  }
+}

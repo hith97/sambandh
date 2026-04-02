@@ -1,0 +1,121 @@
+.end-page-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.end-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.end-video-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding:
+    calc(var(--safe-top) + 8px)
+    calc(var(--safe-right) + 8px)
+    calc(var(--safe-bottom) + 8px)
+    calc(var(--safe-left) + 8px);
+  box-sizing: border-box;
+}
+
+.end-video-stage {
+  position: relative;
+  width: min(100%, calc(100dvh * 9 / 16));
+  height: min(100%, calc(100vw * 16 / 9));
+  max-width: calc(100% - 16px);
+  max-height: calc(100% - 16px);
+}
+
+.cashback-btn-video {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(82px, 13.5%, 116px);
+  transform: translateX(-50%);
+  background: url('https://res.cloudinary.com/dbyrmzuuw/image/upload/v1773987103/Button_2_clkrap.png') no-repeat center;
+  background-size: 100% 100%;
+  border: none;
+  font-family: var(--font-display);
+  font-size: clamp(16px, 2.5vw, 21px);
+  font-weight: 500;
+  color: #3e1b00;
+  width: clamp(146px, 28%, 188px);
+  min-width: 0;
+  height: clamp(42px, 7.2%, 52px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+  padding: 0 16px 4px;
+  text-align: center;
+  line-height: 1.05;
+  filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.6));
+  opacity: 0;
+  animation: popInBtn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  white-space: nowrap;
+}
+
+@keyframes popInBtn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0) translateY(24px) rotate(-6deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) translateY(0) rotate(0deg);
+  }
+}
+
+.cashback-btn-video:active {
+  transform: translateX(-50%) scale(0.95) !important;
+}
+
+@media (max-width: 380px) {
+  .cashback-btn-video {
+    bottom: clamp(72px, 12.8%, 96px);
+    width: clamp(136px, 29%, 168px);
+    height: clamp(38px, 6.8%, 46px);
+    font-size: clamp(14px, 2.7vw, 17px);
+  }
+}
+
+@media (max-width: 360px) {
+  .cashback-btn-video {
+    bottom: clamp(66px, 12.2%, 90px);
+    width: clamp(128px, 30%, 156px);
+    height: clamp(36px, 6.5%, 42px);
+    font-size: clamp(13px, 2.8vw, 16px);
+  }
+}
+
+@media (max-height: 540px) and (orientation: landscape) {
+  .end-video-stage {
+    width: min(100%, calc((100dvh - 16px) * 9 / 16));
+    height: min(100%, calc((100vw - 16px) * 16 / 9));
+  }
+
+  .cashback-btn-video {
+    bottom: clamp(30px, 10.5%, 56px);
+    width: clamp(122px, 24%, 158px);
+    height: clamp(34px, 6.4%, 40px);
+    font-size: clamp(12px, 1.9vw, 15px);
+  }
+}
